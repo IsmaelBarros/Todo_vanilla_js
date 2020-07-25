@@ -14,31 +14,36 @@ filterOption.addEventListener('click', filterTodo)
 function addTodo(event) {
     //prevent form from submitting
     event.preventDefault()
-    //Todo DIV
-    const todoDiv = document.createElement('div')
-    todoDiv.classList.add('todo')
-    //Create LI
-    const newTodo = document.createElement('li')
-    newTodo.innerText = todoInput.value
-    newTodo.classList.add('todo-item')
-    //coloca <li> como filho de <div>
-    todoDiv.appendChild(newTodo)
-    //ADD TODO TO LOCALSTORAGE
-    saveLocalTodos(todoInput.value)
-    //CHECK MARK BUTTON
-    const completedButton = document.createElement('button')
-    completedButton.innerHTML = '<i class="fas fa-check"></i>'
-    completedButton.classList.add('complete-btn')
-    todoDiv.appendChild(completedButton)
-    //CHECK TRASH BUTTON
-    const trashButton = document.createElement('button')
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>'
-    trashButton.classList.add('trash-btn')
-    todoDiv.appendChild(trashButton)
-    //APPEND TO LIST
-    todoList.appendChild(todoDiv)
-    //Clear todo input after submitted
-    todoInput.value = ""
+
+    const valorInput = document.getElementsByClassName("todo-input")[0].value
+    if (valorInput.length > 0) {
+        //Todo DIV
+        const todoDiv = document.createElement('div')
+        todoDiv.classList.add('todo')
+        //Create LI
+        const newTodo = document.createElement('li')
+        newTodo.innerText = todoInput.value
+        console.log(todoInput.value)
+        newTodo.classList.add('todo-item')
+        //coloca <li> como filho de <div>
+        todoDiv.appendChild(newTodo)
+        //ADD TODO TO LOCALSTORAGE
+        saveLocalTodos(todoInput.value)
+        //CHECK MARK BUTTON
+        const completedButton = document.createElement('button')
+        completedButton.innerHTML = '<i class="fas fa-check"></i>'
+        completedButton.classList.add('complete-btn')
+        todoDiv.appendChild(completedButton)
+        //CHECK TRASH BUTTON
+        const trashButton = document.createElement('button')
+        trashButton.innerHTML = '<i class="fas fa-trash"></i>'
+        trashButton.classList.add('trash-btn')
+        todoDiv.appendChild(trashButton)
+        //APPEND TO LIST
+        todoList.appendChild(todoDiv)
+        //Clear todo input after submitted
+        todoInput.value = ""
+    }
 }
 
 function deleteCheck(e) {
